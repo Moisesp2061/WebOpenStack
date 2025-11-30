@@ -1,0 +1,27 @@
+#cloud-config
+package_update: true
+package_upgrade: true
+packages:
+  - apache2
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Servidor Web - Grupo 1</title>
+        <style>
+          body { font-family: Arial; text-align: center; margin-top: 10%; background: #f0f0f0; }
+          h1 { color: #0066cc; }
+        </style>
+      </head>
+      <body>
+        <h1>¡Funciona!</h1>
+        <h2>Servidor web Apache desplegado en OpenStack (DevStack)</h2>
+        <p>Actividad final - Redes Locales</p>
+        <p>Grupo 1 - 2025</p>
+      </body>
+      </html>
+runcmd:
+  - systemctl enable apache2
+  - systemctl start apache2
